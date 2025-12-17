@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 README.md para Yatai-Fullstackmarkdown
 
 # Yatai-Fullstack
@@ -87,3 +88,7 @@ Correo: ppyerbes@gmail.com
 ¡Gracias por visitar Yatai-Fullstack! Este proyecto está en desarrollo, y cualquier retroalimentación es bienvenida a través de GitHub.
 
 
+=======
+# ProyectoFinal_Yatai
+Ecomerce de Yatai Station
+>>>>>>> af5a9fed06223c2ee440123a4aaff29f03487976
