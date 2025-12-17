@@ -21,12 +21,7 @@ router.post('/register', [
     .matches(/\d/).withMessage('Password must contain at least one number')
     .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter'),
 
-  body('phone')
-    .notEmpty().withMessage('phone is required')
-    .isLength({ min: 10, max: 10 }).withMessage('Phone must be exactly 10 digits')
-    .isNumeric().withMessage('Phone must contain only numbers'),
-
-  // Campos opcionales con validación
+   // Campos opcionales con validación
   body('role')
     .optional()
     .isIn(['admin', 'customer', 'guest']).withMessage('Role must be admin, customer, or guest'),

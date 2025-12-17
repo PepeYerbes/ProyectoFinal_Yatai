@@ -1,0 +1,147 @@
+<div class="cart-page">
+  <div class="cart-header">
+    <h1>Tu Carrito de Compras</h1>
+  </div>
+
+  <!-- Loading State -->
+  @if (isLoading) {
+  <div class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Cargando carrito...</p>
+  </div>
+  }
+
+  <!-- Error State -->
+  @if (error) {
+  <ui-card variant="outline" class="error-card">
+    <div class="error-content">
+      <h3>⚠️ {{ error }}</h3>
+      <ui-button variant="primary" (click)="continueShopping()">
+        Volver al Inicio
+      </ui-button>
+    </div>
+  </ui-card>
+  }
+
+  <!-- Empty Cart State -->
+  @if (!isLoading && isEmpty && !error) {
+  <ui-card variant="outline" class="empty-cart-card">
+    <div class="empty-content">
+      <div class="empty-icon">🛒</div>
+      <h3>Tu carrito está vacío</h3>
+      <p>¡Aún no has agregado ningún producto!</p>
+      <ui-button variant="primary" (click)="continueShopping()">
+        Continuar Comprando
+      </ui-button>
+    </div>
+  </ui-card>
+  }
+
+  <!-- Cart Items -->
+  @if (!isLoading && !isEmpty && !error) {
+  <div class="cart-container">
+    <!-- Items Section -->
+    <div class="cart-items-section">
+      <div class="items-header">
+        <h2>Productos en tu carrito ({{ cartItems.length }})</h2>
+      </div>
+
+      <div class="cart-items">
+        @for (item of cartItems; track item._id) {
+        <div class="cart-item">
+          <div class="item-image">
+            <img [src]="item.product.imagesUrl[0]"
+              [alt]="item.product.name" class="product-image">
+          </div>
+
+          <div class="item-details">
+            <h3 class="item-name">{{ item.product.name }}</h3>
+            <p class="item-description">{{ item.product.description }}</p>
+            <p class="item-price">
+              <span class="unit-price">${{ item.product.price.toFixed(2) }}</span>
+              <span class="total-price">Total: ${{ (item.product.price * item.quantity).toFixed(2) }}</span>
+            </p>
+          </div>
+
+          <div class="item-quantity">
+            <label>Cantidad:</label>
+            <div class="quantity-control">
+              <button (click)="updateQuantity(item.product._id, item.quantity - 1)" 
+                [disabled]="item.quantity <= 1" class="qty-btn">−</button>
+              <input type="number" [value]="item.quantity" readonly class="qty-input">
+              <button (click)="updateQuantity(item.product._id, item.quantity + 1)" 
+                [disabled]="item.quantity >= item.product.stock" class="qty-btn">+</button>
+            </div>
+            <span class="stock-info" *ngIf="item.quantity >= item.product.stock">
+              (Stock máximo: {{ item.product.stock }})
+            </span>
+          </div>
+
+          <div class="item-actions">
+            <button class="remove-btn" (click)="removeFromCart(item.product._id)">
+              🗑️ Remover
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="cart-summary-section">
+      <ui-card variant="elevated" class="summary-card">
+        <div class="summary-content">
+          <h3>Resumen del Pedido</h3>
+
+          <div class="summary-row">
+            <span class="summary-label">Subtotal:</span>
+            <span class="summary-value">${{ getTotalPrice().toFixed(2) }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span class="summary-label">Envío:</span>
+            <span class="summary-value">Calculado en checkout</span>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-row total">
+            <span class="summary-label">Total:</span>
+            <span class="summary-value">${{ getTotalPrice().toFixed(2) }}</span>
+          </div>
+
+          <button class="checkout-btn" (click)="checkout()">
+            Proceder al Pago
+          </button>
+
+          <button class="continue-btn" (click)="continueShopping()">
+            Continuar Comprando
+          </button>
+          
+          @if (showCheckoutForm) {
+          <div class="checkout-form">
+            <h4>Detalles de envío</h4>
+            <input type="text" placeholder="Nombre" (input)="shipping.name = $any($event.target).value">
+            <input type="text" placeholder="Dirección" (input)="shipping.address = $any($event.target).value">
+            <input type="text" placeholder="Ciudad" (input)="shipping.city = $any($event.target).value">
+            <input type="text" placeholder="Estado" (input)="shipping.state = $any($event.target).value">
+            <input type="text" placeholder="Código postal" (input)="shipping.postalCode = $any($event.target).value">
+            <input type="text" placeholder="Teléfono" (input)="shipping.phone = $any($event.target).value">
+
+            <h4>Pago</h4>
+            <input type="text" placeholder="Número de tarjeta" (input)="payment.cardNumber = $any($event.target).value">
+            <input type="text" placeholder="Nombre en la tarjeta" (input)="payment.cardHolderName = $any($event.target).value">
+            <input type="text" placeholder="MM/YY" (input)="payment.expiryDate = $any($event.target).value">
+
+            <div class="checkout-actions">
+              <button class="checkout-btn" (click)="submitCheckout()" [disabled]="isProcessing">{{ isProcessing ? 'Procesando...' : 'Confirmar Pago' }}</button>
+              <button class="continue-btn" (click)="showCheckoutForm = false" [disabled]="isProcessing">Cancelar</button>
+            </div>
+          </div>
+          }
+        </div>
+      </ui-card>
+    </div>
+  </div>
+  }
+</div>

@@ -1,0 +1,14 @@
+<!-- Cart Button Component Template -->
+<a routerLink="/cart" class="cart-button">
+  <div class="cart-icon-container">
+    <ui-icon name="cart" [size]="30"></ui-icon>
+    @if (count > 0) {
+    <ui-badge type="count" class="cart-badge">
+      {{ count > 99 ? '99+' : count }}
+    </ui-badge>
+    }
+  </div>
+  @if (showLabel) {
+  <span class="cart-text">{{ label }}</span>
+  }
+</a>

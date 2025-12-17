@@ -1,0 +1,58 @@
+<!--
+✅ CAMBIO NgRx: Template actualizado para usar NgRx Store
+ANTES: @if (profile && !error) { ... } - estado local del componente
+DESPUÉS: @if (user$ | async; as user) { ... } - observable del Store
+-->
+<div class="profile-container">
+  <!-- ✅ NgRx: Usuario desde el Store con async pipe -->
+  @if (user$ | async; as user) {
+    <div class="profile-content">
+      <div class="profile-header">
+        <img [src]="user.avatar" [alt]="user.displayName" class="avatar">
+        <h2>Bienvenido, {{ user.displayName }}</h2>
+      </div>
+      <div class="profile-info">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Rol:</strong> {{ user.role }}</p>
+        <p><strong>Estado:</strong> {{ user.isActive ? 'Activo' : 'Inactivo' }}</p>
+        <p><strong>ID:</strong> {{ user._id }}</p>
+      </div>
+    </div>
+  } @else {
+    <!-- Estado de carga o no autenticado -->
+    <div class="loading-state">
+      <p>Cargando perfil del usuario...</p>
+    </div>
+  }
+
+  <!-- ❌ ANTES: Código comentado para referencia didáctica -->
+  <!--
+  @if (error) {
+    <div class="error-message">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if (profile && !error) {
+    <div class="profile-content">
+      <div class="profile-header">
+        <img [src]="profile.avatar" [alt]="profile.displayName" class="avatar">
+        <h2>Bienvenido, {{ profile.displayName }}</h2>
+      </div>
+      <div class="profile-info">
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Rol:</strong> {{ profile.role }}</p>
+        <p><strong>Estado:</strong> {{ profile.isActive ? 'Activo' : 'Inactivo' }}</p>
+        <p><strong>ID:</strong> {{ profile._id }}</p>
+      </div>
+    </div>
+  }
+  -->
+
+  <!-- Loading state -->
+  @if (!profile && !error) {
+    <div class="loading">
+      <p>Cargando perfil...</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+<!-- Button Component Template -->
+<button [type]="type" [disabled]="disabled" [class]="buttonClasses" (click)="onClick($event)">
+
+  <!-- Loading State -->
+  <span *ngIf="loading" class="button-loading">
+    <svg class="loading-spinner" width="16" height="16" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416"
+        stroke-dashoffset="31.416">
+        <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416"
+          repeatCount="indefinite" />
+        <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  </span>
+
+  <!-- Icon (Left) -->
+  <span *ngIf="iconLeft && !loading" class="button-icon button-icon-left">
+    <ng-content select="[slot=icon-left]"></ng-content>
+  </span>
+
+  <!-- Content -->
+  <span class="button-content" [class.hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+
+  <!-- Icon (Right) -->
+  <span *ngIf="iconRight && !loading" class="button-icon button-icon-right">
+    <ng-content select="[slot=icon-right]"></ng-content>
+  </span>
+</button>

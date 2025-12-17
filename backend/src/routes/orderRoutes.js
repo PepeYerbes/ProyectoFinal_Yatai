@@ -16,30 +16,30 @@ import isAdmin from '../middlewares/isAdminMiddleware.js';
 const router = express.Router();
 
 // Obtener todas las órdenes (admin)
-router.get('/orders', authMiddleware, isAdmin, getOrders);
+router.get('', authMiddleware, isAdmin, getOrders);
 
 // Obtener órdenes por usuario
-router.get('/orders/user/:userId', authMiddleware, getOrdersByUser);
+router.get('/user/:userId', authMiddleware, getOrdersByUser);
 
 // Obtener orden por ID
-router.get('/orders/:id', authMiddleware, getOrderById);
+router.get('/:id', authMiddleware, getOrderById);
 
 // Crear nueva orden
-router.post('/orders', authMiddleware, createOrder);
+router.post('', authMiddleware, createOrder);
 
 // Cancelar orden (función especial)
-router.patch('/orders/:id/cancel', authMiddleware, isAdmin, cancelOrder);
+router.patch('/:id/cancel', authMiddleware, isAdmin, cancelOrder);
 
 // Actualizar solo el estado de la orden
-router.patch('/orders/:id/status', authMiddleware, isAdmin, updateOrderStatus);
+router.patch('/:id/status', authMiddleware, isAdmin, updateOrderStatus);
 
 // Actualizar solo el estado de pago
-router.patch('/orders/:id/payment-status', authMiddleware, isAdmin, updatePaymentStatus);
+router.patch('/:id/payment-status', authMiddleware, isAdmin, updatePaymentStatus);
 
 // Actualizar orden completa
-router.put('/orders/:id', authMiddleware, isAdmin, updateOrder);
+router.put('/:id', authMiddleware, isAdmin, updateOrder);
 
 // Eliminar orden (solo si está cancelada)
-router.delete('/orders/:id', authMiddleware, isAdmin, deleteOrder);
+router.delete('/:id', authMiddleware, isAdmin, deleteOrder);
 
 export default router;

@@ -1,0 +1,88 @@
+/* Form Field Component Styles */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-label.required {
+  color: var(--text);
+}
+
+.required-asterisk {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.field-control {
+  position: relative;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.field-error {
+  font-size: 12px;
+  color: #ef4444;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '⚠';
+  font-size: 12px;
+}
+
+/* Field states */
+.form-field.has-error .field-label {
+  color: #ef4444;
+}
+
+.form-field.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Field sizes */
+.form-field.size-sm {
+  margin-bottom: 12px;
+}
+
+.form-field.size-sm .field-label {
+  font-size: 13px;
+}
+
+.form-field.size-sm .field-hint,
+.form-field.size-sm .field-error {
+  font-size: 11px;
+}
+
+.form-field.size-lg {
+  margin-bottom: 20px;
+}
+
+.form-field.size-lg .field-label {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.form-field.size-lg .field-hint,
+.form-field.size-lg .field-error {
+  font-size: 13px;
+}

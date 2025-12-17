@@ -1,0 +1,66 @@
+/* Badge Component Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  border-radius: var(--r1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Variants */
+.badge-primary {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.badge-secondary {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.badge-success {
+  background-color: #10b981;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.badge-error {
+  background-color: #ef4444;
+  color: white;
+}
+
+.badge-outline {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Sizes */
+.badge-sm {
+  padding: 2px 6px;
+  font-size: 10px;
+}
+
+.badge {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.badge-lg {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* Hover states for interactive badges */
+.badge:hover {
+  opacity: 0.9;
+}

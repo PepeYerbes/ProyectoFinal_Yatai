@@ -1,0 +1,23 @@
+<!-- Form Field Component Template -->
+<div class="form-field" [class]="fieldClasses">
+  @if (label) {
+  <label class="field-label" [class.required]="required">
+    {{ label }}
+    @if (required) {
+    <span class="required-asterisk">*</span>
+    }
+  </label>
+  }
+
+  <div class="field-control">
+    <ng-content></ng-content>
+  </div>
+
+  @if (hint && !error) {
+  <div class="field-hint">{{ hint }}</div>
+  }
+
+  @if (error) {
+  <div class="field-error">{{ error }}</div>
+  }
+</div>

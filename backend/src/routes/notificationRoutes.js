@@ -16,30 +16,30 @@ import isAdmin from '../middlewares/isAdminMiddleware.js';
 const router = express.Router();
 
 // Obtener todas las notificaciones (admin)
-router.get('/notifications', authMiddleware, isAdmin, getNotifications);
+router.get('', authMiddleware, isAdmin, getNotifications);
 
 // Obtener notificaciones no leídas por usuario
-router.get('/notifications/unread/:userId', authMiddleware, getUnreadNotificationsByUser);
+router.get('/unread/:userId', authMiddleware, getUnreadNotificationsByUser);
 
 // Obtener notificaciones por usuario
-router.get('/notifications/user/:userId', authMiddleware, getNotificationByUser);
+router.get('/user/:userId', authMiddleware, getNotificationByUser);
 
 // Obtener notificación por ID
-router.get('/notifications/:id', authMiddleware, getNotificationById);
+router.get('/:id', authMiddleware, getNotificationById);
 
 // Crear nueva notificación
-router.post('/notifications', authMiddleware, createNotification);
+router.post('', authMiddleware, createNotification);
 
 // Marcar una notificación como leída
-router.patch('/notifications/:id/mark-read', authMiddleware, markAsRead);
+router.patch('/:id/mark-read', authMiddleware, markAsRead);
 
 // Marcar todas las notificaciones de un usuario como leídas
-router.patch('/notifications/user/:userId/mark-all-read', authMiddleware, markAllAsReadByUser);
+router.patch('/user/:userId/mark-all-read', authMiddleware, markAllAsReadByUser);
 
 // Actualizar notificación
-router.put('/notifications/:id', authMiddleware, isAdmin, updateNotification);
+router.put('/:id', authMiddleware, isAdmin, updateNotification);
 
 // Eliminar notificación
-router.delete('/notifications/:id', authMiddleware, deleteNotification);
+router.delete('/:id', authMiddleware, deleteNotification);
 
 export default router;

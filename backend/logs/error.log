@@ -1,0 +1,35 @@
+2025-12-15T04:37:42.128Z | UNCAUGHT EXCEPTION | pro is not defined | ReferenceError: pro is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:37:42.121Z | UNCAUGHT EXCEPTION | pro is not defined | ReferenceError: pro is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:37:45.220Z | UNCAUGHT EXCEPTION | produ is not defined | ReferenceError: produ is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:37:45.226Z | UNCAUGHT EXCEPTION | produ is not defined | ReferenceError: produ is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:37:54.658Z | UNCAUGHT EXCEPTION | productRoutes is not defined | ReferenceError: productRoutes is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:37:54.667Z | UNCAUGHT EXCEPTION | productRoutes is not defined | ReferenceError: productRoutes is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)
+2025-12-15T04:43:15.032Z | UNCAUGHT EXCEPTION | productRoutes is not defined | ReferenceError: productRoutes is not defined
+    at file:///C:/Users/jose.yerbes/Documents/Yatai/Yatai-Fullstack/backend/src/server.js:30:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5)

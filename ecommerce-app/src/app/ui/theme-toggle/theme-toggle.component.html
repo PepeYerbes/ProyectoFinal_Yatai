@@ -1,0 +1,14 @@
+<!-- Theme Toggle Component Template -->
+<button class="theme-toggle-btn" (click)="toggleTheme()"
+  [title]="isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+  [attr.aria-label]="isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+  <div class="theme-icon-wrapper">
+    <ui-icon [name]="isDark ? 'sun' : 'moon'" [size]="iconSize" class="theme-icon"></ui-icon>
+  </div>
+
+  @if (showLabel) {
+  <span class="theme-label">
+    {{ isDark ? 'Claro' : 'Oscuro' }}
+  </span>
+  }
+</button>

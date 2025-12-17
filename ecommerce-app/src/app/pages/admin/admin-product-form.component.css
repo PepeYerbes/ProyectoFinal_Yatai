@@ -1,0 +1,7 @@
+.product-form {
+  max-width: 800px;
+  margin: 1.5rem auto;
+}
+.product-form label { display:block; margin-top:0.75rem; }
+.product-form input, .product-form textarea { width:100%; padding:8px; border:1px solid var(--border-color); border-radius:6px }
+.product-form .actions { margin-top:1rem; display:flex; gap:0.5rem }

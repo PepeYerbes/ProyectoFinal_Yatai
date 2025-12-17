@@ -1,0 +1,23 @@
+<div class="review-form">
+  <h4>Escribe tu opinión</h4>
+
+  <div *ngIf="!authService.isLoggedIn()" class="not-logged">
+    <p>Debes iniciar sesión para escribir una reseña.</p>
+  </div>
+
+  <div *ngIf="authService.isLoggedIn()">
+    <label class="label">Calificación</label>
+    <select [(ngModel)]="rating" [disabled]="loading">
+      <option *ngFor="let r of [5,4,3,2,1]" [value]="r">{{ r }} ★</option>
+    </select>
+
+    <label class="label">Comentario (opcional)</label>
+    <textarea [(ngModel)]="comment" rows="4" [disabled]="loading" maxlength="500"></textarea>
+
+    <div class="actions">
+      <button (click)="submit()" [disabled]="loading || !canSubmit()">Enviar reseña</button>
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </div>
+</div>

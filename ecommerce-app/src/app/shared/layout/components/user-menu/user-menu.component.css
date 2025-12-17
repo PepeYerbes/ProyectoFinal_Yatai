@@ -1,0 +1,141 @@
+/* User Menu Component Styles */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-menu-container {
+  position: relative;
+}
+
+.user-button {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--accent-contrast);
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: var(--r2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+
+.user-button:hover,
+.user-button.active {
+  border-color: var(--border);
+  background: var(--hover-bg);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.user-greeting {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.user-account {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.dropdown-arrow {
+  flex-shrink: 0;
+}
+
+/* User Dropdown */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  box-shadow: var(--elev-2);
+  min-width: 240px;
+  z-index: 1005;
+}
+
+.dropdown-content {
+  padding: 16px;
+}
+
+.auth-section {
+  text-align: center;
+}
+
+.primary-button {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  padding: 8px 24px;
+  border-radius: var(--r2);
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 12px;
+  transition: opacity 0.2s;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+.auth-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.auth-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.auth-text a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.user-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-link {
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dropdown-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.logout-button {
+  color: var(--danger) !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+}

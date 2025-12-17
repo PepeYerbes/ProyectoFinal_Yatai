@@ -1,0 +1,53 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">Yatai</span>
+      </div>
+      <h1 class="auth-title">Iniciar sesión</h1>
+      <p class="auth-subtitle">Bienvenido de vuelta, ingresa tus datos</p>
+    </div>
+
+    @if (banner) {
+    <div class="auth-banner error">
+      <div class="banner-icon">⚠️</div>
+      <div class="banner-content">
+        <strong>Error:</strong>
+        <span>{{ banner }}</span>
+      </div>
+    </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+      <ui-form-field label="Correo electrónico"
+        [error]="form.get('email')?.invalid && (form.get('email')?.touched || form.get('email')?.dirty) ? 'Ingresa un correo válido' : ''">
+        <ui-input type="email" formControlName="email" placeholder="tucorreo@ejemplo.com"
+          [attr.aria-describedby]="form.get('email')?.invalid ? 'email-error' : null">
+        </ui-input>
+      </ui-form-field>
+
+      <ui-form-field label="Contraseña"
+        [error]="form.get('password')?.invalid && (form.get('password')?.touched || form.get('password')?.dirty) ? 'La contraseña es requerida' : ''">
+        <ui-input type="password" formControlName="password" placeholder="Tu contraseña"
+          [attr.aria-describedby]="form.get('password')?.invalid ? 'password-error' : null">
+        </ui-input>
+      </ui-form-field>
+
+      <div class="form-extras">
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <ui-button [disabled]="form.invalid || loading" [loading]="loading" class="auth-submit-button">
+        Iniciar sesión
+      </ui-button>
+    </form>
+
+    <div class="auth-footer">
+      <p class="auth-footer-text">
+        ¿No tienes una cuenta?
+        <a routerLink="/auth/register" class="auth-link">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="reviews">
+  <h4>Opiniones ({{ reviews.length }})</h4>
+
+  <div *ngIf="loading">Cargando reseñas...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <ul *ngIf="!loading && reviews.length > 0" class="reviews-list">
+    <li *ngFor="let r of reviews" class="review-item">
+      <div class="avatar">
+        <div class="avatar-placeholder">👤</div>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <strong>{{ typeof r.user === 'string' ? 'Usuario' : (r.user.displayName || 'Usuario') }}</strong>
+          <span class="rating">{{ r.rating }} ★</span>
+          <small class="time">{{ formatAgo(r.createdAt) }}</small>
+        </div>
+        <p class="comment">{{ r.comment }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="!loading && reviews.length === 0" class="empty">Aún no hay reseñas para este producto.</div>
+</div>

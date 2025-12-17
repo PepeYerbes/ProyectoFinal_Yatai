@@ -1,0 +1,61 @@
+<div class="product-card">
+  <div class="product-image">
+    
+    <img [src]="imageSrc" [alt]="product.name" (click)="onCardClick()"
+      (load)="onImageLoad($event)" (error)="onImageError($event)" [class.loading]="isLoading">
+    <button class="favorite-button" (click)="onFavoriteClick($event)" [class.active]="isFavorite"
+      [attr.aria-label]="isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'">
+      <span class="heart">❤</span>
+    </button>
+    @if (isLoading) {
+    <div class="image-loading">
+      <div class="loading-spinner"></div>
+    </div>
+    }
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-name" (click)="onCardClick()">{{ product.name }}</h3>
+
+    @if (showDescription) {
+    <p class="product-description">{{ product.description }}</p>
+    }
+
+    <div class="product-price">
+      <span class="current-price">
+        <span class="amount">{{ formatPrice(product.price) }}</span>
+      </span>
+    </div>
+
+    @if (showRating && ratingStars.length > 0) {
+    <div class="product-rating">
+      <div class="stars">
+        @for (star of ratingStars; track $index) {
+        <span class="star" [class.filled]="star">★</span>
+        }
+      </div>
+    </div>
+    }
+
+    @if (showStock) {
+    <div class="product-stock" [attr.data-status]="stockStatus">
+      <span [class]="'stock-' + stockStatus">{{ stockMessage }}</span>
+    </div>
+    }
+
+    @if (showAddToCart) {
+    <button class="add-to-cart-btn" [disabled]="isOutOfStock || isLoading" [class.loading]="isLoading"
+      (click)="onAddToCart()" [attr.aria-label]="addToCartText + ' ' + product.name">
+      @if (!isLoading) {
+      {{ addToCartText }}
+      }
+      @if (isLoading) {
+      <span class="button-loading">
+        <span class="loading-spinner"></span>
+        Agregando...
+      </span>
+      }
+    </button>
+    }
+  </div>
+</div>

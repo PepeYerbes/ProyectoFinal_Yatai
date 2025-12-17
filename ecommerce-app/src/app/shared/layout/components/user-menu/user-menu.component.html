@@ -1,0 +1,51 @@
+<div class="user-menu-container">
+  <button class="user-button" [class.active]="isDropdownOpen" (click)="toggleDropdown()">
+
+    <!-- User Info for authenticated users -->
+    <div class="user-info" *ngIf="isAuthenticated">
+      <span class="user-greeting">Hola</span>
+      <span class="user-account">Mi Cuenta</span>
+    </div>
+
+    <!-- Login text for non-authenticated users -->
+    <div class="user-info" *ngIf="!isAuthenticated">
+      <span class="user-account">Inicia Sesión</span>
+    </div>
+
+    <!-- Dropdown Arrow -->
+    <span class="dropdown-arrow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6,9 12,15 18,9"></polyline>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="user-dropdown" *ngIf="isDropdownOpen">
+    <div class="dropdown-content">
+
+      <!-- Non-authenticated state -->
+      <div class="auth-section" *ngIf="!isAuthenticated">
+        <button class="primary-button" (click)="onLogin()">
+          Iniciar Sesión
+        </button>
+        <p class="auth-text">
+          ¿Nuevo cliente?
+          <a href="/auth/register">Regístrate aquí</a>
+        </p>
+      </div>
+
+      <!-- Authenticated state -->
+      <div class="user-links" *ngIf="isAuthenticated">
+        <button class="dropdown-link">Mi Perfil</button>
+        <button class="dropdown-link">Mis Pedidos</button>
+        <button class="dropdown-link">Lista de Deseos</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-link logout-button" (click)="onLogout()">
+          Cerrar Sesión
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

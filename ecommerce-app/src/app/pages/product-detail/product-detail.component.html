@@ -1,0 +1,128 @@
+<div class="product-detail">
+  <!-- Loading State -->
+  @if (loading) {
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <p>Cargando producto...</p>
+  </div>
+  }
+
+  <!-- Error State -->
+  @if (error && !loading) {
+  <div class="error-state">
+    <h2>Error</h2>
+    <p>{{ error }}</p>
+  </div>
+  }
+
+  <!-- Product Content -->
+  @if (product && !loading) {
+  <div class="product-content">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a>
+      <span>/</span>
+      <a href="/products">Productos</a>
+      <span>/</span>
+      <span>{{ product.name }}</span>
+    </nav>
+
+    <div class="main-grid">
+      <!-- Product Image Section -->
+      <section class="image-section">
+        <div class="image-container">
+          <img [src]="product.imagesUrl[0] || '/assets/placeholder-product.jpg'" [alt]="product.name"
+            class="product-image" />
+          <button class="favorite-btn" [class.active]="isFavorite" (click)="toggleFavorite()"
+            [attr.aria-label]="isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'">
+            ❤
+          </button>
+        </div>
+
+        <!-- Thumbnail Gallery (if multiple images) -->
+        @if (product.imagesUrl.length > 1) {
+        <div class="thumbnails">
+          @for (img of product.imagesUrl; track img) {
+          <img [src]="img" [alt]="product.name" class="thumbnail" />
+          }
+        </div>
+        }
+      </section>
+
+      <!-- Product Details Section -->
+      <section class="details-section">
+        <!-- Category & Title -->
+        <div class="header">
+          <span class="category-badge">{{ product.category.name }}</span>
+          <h1 class="title">{{ product.name }}</h1>
+        </div>
+
+        <!-- Price & Stock -->
+        <div class="price-stock">
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount">{{ formatPrice(product.price) }}</span>
+          </div>
+          <div class="stock-info">
+            <div class="stock" [class.low]="product.stock <= 5 && product.stock > 0" [class.out]="product.stock === 0">
+              @if (product.stock > 0) {
+              <span>En stock ({{ product.stock }} disponibles)</span>
+              }
+              @if (product.stock > 0 && product.stock <= 5) {
+              <span>⚠️ Últimas unidades</span>
+              }
+              @if (product.stock === 0) {
+              <span>Sin stock</span>
+              }
+            </div>
+            @if (quantityInCart > 0) {
+            <div class="quantity-badge">
+              <span>En tu carrito: <strong>{{ quantityInCart }}</strong></span>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="description">
+          <h3>Descripción</h3>
+          <p>{{ product.description }}</p>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button class="add-to-cart-btn" (click)="addToCart()" [disabled]="product.stock === 0 || addingToCart"
+            [class.loading]="addingToCart">
+            @if (!addingToCart) {
+            {{ product.stock === 0 ? 'No disponible' : 'Agregar al carrito' }}
+            } @else {
+            <span class="spinner-mini"></span>
+            Agregando...
+            }
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        @if (cartSuccess) {
+        <div class="success-message">
+          ✅ Producto agregado al carrito
+        </div>
+        }
+      </section>
+    </div>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+      <h2>Reseñas</h2>
+      <div class="reviews-grid">
+        <div class="reviews-form">
+          <ui-review-form [productId]="product._id" (submitted)="onReviewSubmitted()"></ui-review-form>
+        </div>
+        <div class="reviews-list">
+          <ui-review-list [productId]="product._id"></ui-review-list>
+        </div>
+      </div>
+    </section>
+  </div>
+  }
+</div>

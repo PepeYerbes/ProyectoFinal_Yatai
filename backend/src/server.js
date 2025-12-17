@@ -5,7 +5,8 @@ import router from './routes/index.js';
 import dbConnection from './config/database.js';
 import logger from './middlewares/logger.js';
 import setupGlobalErrorHandlers from './middlewares/globalErrorHandler.js';
-import errorHandler from './middlewares/errorHandler.js'; // Importar errorHandler
+import errorHandler from './middlewares/errorHandler.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -18,11 +19,16 @@ dbConnection();
 // Middlewares en el orden correcto
 app.use(express.json());
 app.use(logger);
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 
 app.get('/', (req, res) => {
   res.send('WELCOME!');
 });
 
+// Usar el router principal en /api
 app.use('/api', router);
 
 app.use((req, res) => {
@@ -32,6 +38,7 @@ app.use((req, res) => {
     url: req.originalUrl,
   });
 });
+
 // El errorHandler debe ir AL FINAL, después de todas las rutas
 app.use(errorHandler);
 

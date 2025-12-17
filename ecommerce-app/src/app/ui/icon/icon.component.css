@@ -1,0 +1,73 @@
+/* Icon Component Styles */
+.ui-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+/* Icon hover states */
+.ui-icon:hover {
+  opacity: 0.8;
+}
+
+/* Icon sizes */
+.ui-icon.size-xs {
+  width: 12px;
+  height: 12px;
+}
+
+.ui-icon.size-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.ui-icon.size-md {
+  width: 20px;
+  height: 20px;
+}
+
+.ui-icon.size-lg {
+  width: 24px;
+  height: 24px;
+}
+
+.ui-icon.size-xl {
+  width: 32px;
+  height: 32px;
+}
+
+/* Icon colors */
+.ui-icon.color-primary {
+  color: var(--accent);
+}
+
+.ui-icon.color-secondary {
+  color: var(--text-muted);
+}
+
+.ui-icon.color-success {
+  color: #10b981;
+}
+
+.ui-icon.color-warning {
+  color: #f59e0b;
+}
+
+.ui-icon.color-error {
+  color: #ef4444;
+}
+
+/* Interactive icons */
+.ui-icon.interactive {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ui-icon.interactive:hover {
+  transform: scale(1.1);
+}
+
+.ui-icon.interactive:active {
+  transform: scale(0.95);
+}

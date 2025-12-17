@@ -18,8 +18,8 @@ const productSchema = new mongoose.Schema({
   },
   
   imagesUrl: {
-    type: String,
-    default: 'https://placehold.co/800x600.png',
+    type: [String],
+    default: ['https://placehold.co/800x600.png'],
     trim: true,
   },
   

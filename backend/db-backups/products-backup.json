@@ -1,0 +1,402 @@
+[
+  {
+    "_id": "68b0fe16bc9000d27e125473",
+    "name": "Aguas Frescas",
+    "description": "Bebidas de sabores naturales y de temporada.",
+    "price": 200,
+    "imagesUrl": "assets/imagen/aguas_frescas.jpg",
+    "stock": 200,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b0ff53bc9000d27e125475",
+    "name": "Cantaritos",
+    "description": "Bebida a base de jugos citricos con una onza de tequila.",
+    "price": 110,
+    "imagesUrl": "assets/imagen/cantaritos.jpg",
+    "stock": 80,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b100b3bc9000d27e125477",
+    "name": "Coctel",
+    "description": "Una mezcla refrescante y vibrante de sabores, perfecta para animar cualquier celebración con un toque sofisticado y divertido.",
+    "price": 105,
+    "imagesUrl": "assets/imagen/coctel.jpg",
+    "stock": 50,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b100dcbc9000d27e125479",
+    "name": "Micheladas",
+    "description": "Bebida refrescante a base de cerveza, jugo de limón, salsas y especias, ideal para disfrutar en cualquier ocasión.",
+    "price": 60,
+    "imagesUrl": "assets/imagen/micheladas.jpg",
+    "stock": 80,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b10416bc9000d27e12547d",
+    "name": "Malteadas",
+    "description": "Refrescantes y cremosos batidos del sabor de tu eleccion",
+    "price": 60,
+    "imagesUrl": "assets/imagen/malteadas.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b10431bc9000d27e12547f",
+    "name": "Refrescos Enbotellados",
+    "description": "El mismo producto que conoces pero en presentaciones divertidas",
+    "price": 60,
+    "imagesUrl": "assets/imagen/refrescos.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b10559bc9000d27e125484",
+    "name": "Bebidas Calientes",
+    "description": "Degusta de nuestra gran variedad de estilos de cafe",
+    "price": 70,
+    "imagesUrl": "assets/imagen/cafe.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b105b1bc9000d27e125486",
+    "name": "Bebidas Nevadas",
+    "description": "Degusta de nuestra gran variedad de frapes",
+    "price": 80,
+    "imagesUrl": "assets/imagen/frapes.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b10636bc9000d27e12548b",
+    "name": "Jugos",
+    "description": "Diversidad en frutas de temporada",
+    "price": 80,
+    "imagesUrl": "assets/imagen/jugos.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b1068cbc9000d27e12548d",
+    "name": "Bebidas energeticas",
+    "description": "Para tus eventos deportivos recuperate del calor y recupera minerales",
+    "price": 80,
+    "imagesUrl": "assets/imagen/energeticas.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b106bbbc9000d27e12548f",
+    "name": "Infusiones",
+    "description": "Ideal para tus eventos zen, sesiones de yoga, o meditaciones guiadas",
+    "price": 80,
+    "imagesUrl": "assets/imagen/infusiones.jpg",
+    "stock": 500,
+    "category": "68b0d0e1bc9000d27e12546a",
+    "__v": 0
+  },
+  {
+    "_id": "68b10781bc9000d27e125497",
+    "name": "Chilaquiles",
+    "description": "Tortilla dorada en tu salsa de preferencia.",
+    "price": 85,
+    "imagesUrl": "assets/imagen/chilaquiles.jpg",
+    "stock": 50,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b107bdbc9000d27e125499",
+    "name": "Enchiladas",
+    "description": "Tortillas rellenas de queso, bañadas en salsa roja o verde, acompañadas de crema y cebolla, un clásico de la cocina mexicana.",
+    "price": 90,
+    "imagesUrl": "assets/imagen/enchiladas.jpg",
+    "stock": 50,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b107d4bc9000d27e12549b",
+    "name": "Flautas",
+    "description": "Tortillas enrolladas y fritas, rellenas de pollo o carne, acompañadas de crema y salsa, un bocado crujiente",
+    "price": 90,
+    "imagesUrl": "assets/imagen/flautas.jpg",
+    "stock": 80,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b107e5bc9000d27e12549d",
+    "name": "Hamburguesas con papas a la francesa",
+    "description": "Jugosas y sabrosas, con carne de res, pollo o vegetales, acompañadas de pan fresco y aderezos al gusto.",
+    "price": 110,
+    "imagesUrl": "assets/imagen/hamburguesas.jpg",
+    "stock": 80,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b107f5bc9000d27e12549f",
+    "name": "HotDogs",
+    "description": "Con salchicha jugosa y toppings variados, desde la clásica versión americana hasta estilos mexicanos con guacamole y jalapeños.",
+    "price": 40,
+    "imagesUrl": "assets/imagen/hotdog.jpg",
+    "stock": 80,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b10807bc9000d27e1254a1",
+    "name": "Maruchan",
+    "description": "Fideos instantáneos con un sabor delicioso y una textura perfecta, ideales para un almuerzo rápido y satisfactorio.",
+    "price": 45,
+    "imagesUrl": "assets/imagen/maruchan.jpg",
+    "stock": 60,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b10823bc9000d27e1254a3",
+    "name": "Tacos de carne asada",
+    "description": "Tortillas rellenas de carne asada, cebolla, cilantro y salsa al gusto.",
+    "price": 30,
+    "imagesUrl": "assets/imagen/tacos.jpg",
+    "stock": 120,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b10830bc9000d27e1254a5",
+    "name": "Tortas de Lechon",
+    "description": "Tortas rellenas de cerdo al vapor, acompañadas de cebolla, aguacate y salsa.",
+    "price": 75,
+    "imagesUrl": "assets/imagen/lechon.jpg",
+    "stock": 60,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b10844bc9000d27e1254a7",
+    "name": "Tostadas",
+    "description": "Crujientes y doradas, ideales para acompañar tus platillos favoritos o disfrutar solas con guacamole y salsa.",
+    "price": 55,
+    "imagesUrl": "assets/imagen/tostadas.jpg",
+    "stock": 80,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b108e1bc9000d27e1254a9",
+    "name": "Tamales",
+    "description": "Ya sean Estilo mexico, yucatos o oaxaqueños, disfrutaras del sabor original y la variedad de estilos que podras compartir.",
+    "price": 40,
+    "imagesUrl": "assets/imagen/tamales.jpg",
+    "stock": 500,
+    "category": "68b0f4aebc9000d27e12546d",
+    "__v": 0
+  },
+  {
+    "_id": "68b109a4bc9000d27e1254ae",
+    "name": "Churros",
+    "description": "Postre tradicional mexicano con toppings de tu eleccion.",
+    "price": 45,
+    "imagesUrl": "assets/imagen/churros.jpg",
+    "stock": 50,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b109b3bc9000d27e1254b0",
+    "name": "Crepas",
+    "description": "Deliciosas y versátiles, disponibles en opciones dulces o saladas, rellenas de ingredientes frescos y acompañadas de toppings irresistibles",
+    "price": 80,
+    "imagesUrl": "assets/imagen/crepas.jpg",
+    "stock": 50,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b109bfbc9000d27e1254b2",
+    "name": "Donas",
+    "description": "Esponjosas, jugosas y con un glaseado perfecto, ideales para un postre clásico que nunca pasa de moda.",
+    "price": 15,
+    "imagesUrl": "assets/imagen/donas.jpg",
+    "stock": 100,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b109d0bc9000d27e1254b4",
+    "name": "Paletas de hielo",
+    "description": "Refrescantes y coloridas ya sea de agua o crema, son ideales para combatir el calor.",
+    "price": 25,
+    "imagesUrl": "assets/imagen/paletas.jpg",
+    "stock": 120,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b109e2bc9000d27e1254b6",
+    "name": "Wafles",
+    "description": "Deliciosos y esponjosos, perfectos para el desayuno o como postre, con opciones dulces y saladas.",
+    "price": 70,
+    "imagesUrl": "assets/imagen/wafles.jpg",
+    "stock": 50,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10b55bc9000d27e1254b8",
+    "name": "Flan",
+    "description": "Postre cremoso de huevo y leche, bañado en caramelo dorado. Su textura sedosa y sabor a vainilla lo hacen irresistible.",
+    "price": 50,
+    "imagesUrl": "assets/imagen/flan.jpg",
+    "stock": 30,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10b76bc9000d27e1254ba",
+    "name": "Pastel de tres leches con fresa",
+    "description": "Bizcocho suave remojado en tres tipos de leche, decorado con fresas frescas. Ideal para celebraciones.",
+    "price": 65,
+    "imagesUrl": "assets/imagen/tres_leches.jpg",
+    "stock": 30,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10b90bc9000d27e1254bc",
+    "name": "Buñuelos",
+    "description": "Tortillas de masa frita crujiente, espolvoreadas con azúcar y canela. Tradicionales en época navideña.",
+    "price": 40,
+    "imagesUrl": "assets/imagen/bunuelos.jpg",
+    "stock": 30,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10ba5bc9000d27e1254be",
+    "name": "Pan de elote",
+    "description": "Pan dulce hecho con granos de maíz, suave y húmedo. Se sirve con café o chocolate caliente.",
+    "price": 55,
+    "imagesUrl": "assets/imagen/pan_elote.jpg",
+    "stock": 30,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10bcfbc9000d27e1254c0",
+    "name": "Arroz con leche",
+    "description": "Arroz cocido en leche con azúcar y canela, servido caliente o frío. Un clásico reconfortante.",
+    "price": 35,
+    "imagesUrl": "assets/imagen/arroz_leche.jpg",
+    "stock": 30,
+    "category": "68b0f5c6bc9000d27e12546f",
+    "__v": 0
+  },
+  {
+    "_id": "68b10c7ebc9000d27e1254c7",
+    "name": "Chaskas",
+    "description": "Ejemplo de edicion",
+    "price": 70,
+    "imagesUrl": "assets/imagen/Chaskas.jpg",
+    "stock": 50,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10c93bc9000d27e1254c9",
+    "name": "Dorichaskas",
+    "description": "Una combinación crujiente y sabrosa que fusiona lo mejor de los snacks con el auténtico sabor del elote mexicano.",
+    "price": 80,
+    "imagesUrl": "assets/imagen/donas.jpg",
+    "stock": 50,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10c9fbc9000d27e1254cb",
+    "name": "Duros Preparados",
+    "description": "Frituras de harina crujientes bañadas en salsa picante, crema, queso, lechuga y cueritos, para los amantes de lo intenso.",
+    "price": 45,
+    "imagesUrl": "assets/imagen/duros.jpg",
+    "stock": 100,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10cadbc9000d27e1254cd",
+    "name": "Elotes Preparados",
+    "description": "Elote tierno y jugoso, bañado en mayonesa, queso, chile y limón, una explosión de sabores en cada bocado.",
+    "price": 75,
+    "imagesUrl": "assets/imagen/elote.jpg",
+    "stock": 50,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10cbebc9000d27e1254cf",
+    "name": "Papas a la francesa",
+    "description": "Crujientes y doradas, perfectas como acompañamiento o snack.",
+    "price": 40,
+    "imagesUrl": "assets/imagen/papas_francesa.jpg",
+    "stock": 80,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10cdfbc9000d27e1254d1",
+    "name": "Tostilocos",
+    "description": "Botana preparada con totopos, cueritos, cacahuates, jícama, pepino, chamoy y salsa picante.",
+    "price": 60,
+    "imagesUrl": "assets/imagen/tostilocos.jpg",
+    "stock": 40,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10cf5bc9000d27e1254d3",
+    "name": "Chicharrones de harina",
+    "description": "Fritura ligera en forma de rueda, servida con salsa, limón y sal.",
+    "price": 30,
+    "imagesUrl": "assets/imagen/chicharrones.jpg",
+    "stock": 70,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b10d11bc9000d27e1254d5",
+    "name": "Pepihuates",
+    "description": "Mezcla de pepino, cacahuates japoneses, chamoy, limón y chile en polvo.",
+    "price": 45,
+    "imagesUrl": "assets/imagen/pepihuates.jpg",
+    "stock": 50,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  },
+  {
+    "_id": "68b236d75b331adaefe413c6",
+    "name": "Mariscos",
+    "description": "Productos frescos del mar del golfo",
+    "price": 80,
+    "imagesUrl": "assets/imagen/mariscos.jpg",
+    "stock": 60,
+    "category": "68b01a49968e57bb9d6fad11",
+    "__v": 0
+  }
+]

@@ -22,7 +22,7 @@ const checkUserExists = async (email) => {
 
 async function register(req, res, next) {
     try {
-        const { displayName, email, password, phone } = req.body;
+        const { displayName, email, password } = req.body;
         const userExists = await checkUserExists(email);
         if (userExists) {
             return res.status(400).json({ message: "User already exists" });
@@ -37,10 +37,9 @@ async function register(req, res, next) {
             email,
             hashpassword,
             role,
-            phone,
         });
         await newUser.save();
-        res.status(201).json({ displayName, email, phone });        
+        res.status(201).json({ displayName, email, password: hashpassword, role });        
     } catch (error) {
         next(error);
     }

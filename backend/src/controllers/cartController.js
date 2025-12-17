@@ -1,4 +1,5 @@
 import Cart from '../models/cart.js';
+import Product from '../models/product.js';
 import errorHandler from '../middlewares/errorHandler.js';
 
 async function getCarts(req, res, next) {
@@ -27,10 +28,11 @@ async function getCartByUser(req, res, next) {
   try {
     const userId = req.params.id;
     const cart = await Cart.findOne({ user: userId }).populate('user').populate('products.product');
-    if (!cart) {
-      return res.status(404).json({ message: 'No cart found for this user' });
-    }
-    res.json(cart);
+    
+    res.json({
+      message: 'Carrito obtenido correctamente',
+      cart: cart || null
+    });
   } catch (error) {
     next(error);
   }
@@ -69,13 +71,19 @@ async function updateCart(req, res, next) {
     const { id } = req.params;
     const { user, products } = req.body;
     if (!user || !products || !Array.isArray(products)) {
-      return res.status(400).json({ error: 'User and products array are required' });
+      return res.status(400).json({ 
+        message: 'User and products array are required',
+        cart: null 
+      });
     }
 
     // Validar que cada producto tenga los campos requeridos
     for (const item of products) {
       if (!item.product || !item.quantity || item.quantity < 1) {
-        return res.status(400).json({ error: 'Each product must have product ID and quantity >= 1' });
+        return res.status(400).json({ 
+          message: 'Each product must have product ID and quantity >= 1',
+          cart: null 
+        });
       }
     }
 
@@ -85,9 +93,15 @@ async function updateCart(req, res, next) {
     ).populate('user').populate('products.product');
 
     if (updatedCart) {
-      return res.status(200).json(updatedCart);
+      return res.status(200).json({
+        message: 'Carrito actualizado correctamente',
+        cart: updatedCart
+      });
     } else {
-      return res.status(404).json({ message: 'Cart not found' });
+      return res.status(404).json({ 
+        message: 'Cart not found',
+        cart: null 
+      });
     }
   } catch (error) {
     next(error);
@@ -100,12 +114,22 @@ async function deleteCart(req, res) {
     const deletedCart = await Cart.findByIdAndDelete(id);
 
     if (deletedCart) {
-      return res.status(204).send();
+      return res.status(200).json({
+        message: 'Carrito eliminado correctamente',
+        cart: null
+      });
     } else {
-      return res.status(404).json({ message: 'Cart not found' });
+      return res.status(404).json({ 
+        message: 'Cart not found',
+        cart: null 
+      });
     }
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ 
+      message: 'Error eliminando carrito',
+      cart: null,
+      error 
+    });
   }
 }
 
@@ -114,11 +138,42 @@ async function addProductToCart(req, res, next) {
     const { userId, productId, quantity = 1 } = req.body;
 
     if (!userId || !productId || quantity < 1) {
-      return res.status(400).json({ error: 'User ID, product ID, and valid quantity are required' });
+      return res.status(400).json({ 
+        message: 'User ID, product ID, and valid quantity are required',
+        cart: null 
+      });
+    }
+
+    // Obtener el producto para validar stock
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({
+        message: 'Producto no encontrado',
+        cart: null
+      });
     }
 
     // Buscar el carrito del usuario
     let cart = await Cart.findOne({ user: userId });
+    
+    // Calcular cantidad total que sería después de agregar
+    let currentQuantityInCart = 0;
+    if (cart) {
+      const existingProduct = cart.products.find(
+        item => item.product.toString() === productId
+      );
+      currentQuantityInCart = existingProduct?.quantity || 0;
+    }
+
+    const totalQuantity = currentQuantityInCart + quantity;
+
+    // Validar que no exceda el stock disponible
+    if (totalQuantity > product.stock) {
+      return res.status(400).json({
+        message: `Stock insuficiente. Stock disponible: ${product.stock}. Cantidad en carrito: ${currentQuantityInCart}. Máximo a agregar: ${Math.max(0, product.stock - currentQuantityInCart)}`,
+        cart: null
+      });
+    }
 
     if (!cart) {
       // Si no existe carrito, crear uno nuevo
@@ -145,7 +200,10 @@ async function addProductToCart(req, res, next) {
     await cart.populate('user');
     await cart.populate('products.product');
 
-    res.status(200).json(cart);
+    res.status(200).json({
+      message: 'Producto agregado al carrito',
+      cart: cart
+    });
   } catch (error) {
     next(error);
   }

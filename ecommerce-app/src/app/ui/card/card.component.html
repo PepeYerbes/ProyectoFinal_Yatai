@@ -1,0 +1,22 @@
+<!-- Card Component Template -->
+<div class="card" [class]="cardClasses">
+  <!-- Card Header (optional) -->
+  <div class="card-header" *ngIf="hasHeaderSlot">
+    <ng-content select="[slot=header]"></ng-content>
+  </div>
+
+  <!-- Card Image (optional) -->
+  <div class="card-image" *ngIf="hasImageSlot">
+    <ng-content select="[slot=image]"></ng-content>
+  </div>
+
+  <!-- Card Content -->
+  <div class="card-content">
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Card Footer (optional) -->
+  <div class="card-footer" *ngIf="hasFooterSlot">
+    <ng-content select="[slot=footer]"></ng-content>
+  </div>
+</div>

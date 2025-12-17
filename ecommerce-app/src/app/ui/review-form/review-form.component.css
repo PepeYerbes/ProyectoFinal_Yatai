@@ -1,0 +1,8 @@
+.review-form { padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.review-form h4 { margin: 0 0 8px 0; }
+.label { display:block; margin-top:8px; font-weight:600; }
+select, textarea { width:100%; padding:8px; border:1px solid var(--border); border-radius:6px; margin-top:6px; }
+.actions { margin-top:10px; }
+.actions button { padding:8px 12px; background:var(--accent); color:var(--accent-contrast); border:none; border-radius:6px; cursor:pointer; }
+.error { color:var(--danger); margin-top:8px; }
+.not-logged { color:var(--text-muted); font-size:14px; }

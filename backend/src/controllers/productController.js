@@ -1,4 +1,5 @@
 import Product from '../models/product.js';
+import Category from '../models/category.js';
 
 async function getProducts(req, res, next) {
   try {
@@ -42,6 +43,15 @@ async function getProductById(req, res, next) {
   }
 }
 
+async function getCategories(req, res, next) {
+  try {
+    const categories = await Category.find().sort({ name: 1 });
+    res.json(categories);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getProductByCategory(req, res) {
   try {
     const id = req.params.idCategory;
@@ -49,10 +59,8 @@ async function getProductByCategory(req, res) {
       .find({ category: id })
       .populate('category')
       .sort({ name: 1 });
-    if (products.length === 0) {
-      return res.status(404).json({ message: 'No products found on this category' });
-    }
-    res.json(products);
+    
+    res.json({ products });
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -185,6 +193,7 @@ async function searchProducts(req, res, next) {
 export {
   getProducts,
   getProductById,
+  getCategories,
   getProductByCategory,
   createProduct,
   updateProduct,

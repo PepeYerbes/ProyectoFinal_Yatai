@@ -12,11 +12,11 @@ import isAdmin from '../middlewares/isAdminMiddleware.js';
 
 const router = express.Router();
 
-router.get('/categories/search', searchCategory);
-router.get('/categories', getCategories);
-router.get('/categories/:id', getCategoryById);
-router.post('/categories', authMiddleware, isAdmin, createCategory);
-router.put('/categories/:id', authMiddleware, isAdmin, updateCategory);
-router.delete('/categories/:id', authMiddleware, isAdmin, deleteCategory);
+router.get('/search', searchCategory);
+router.get('', getCategories);
+router.get('/:id', getCategoryById);
+router.post('', authMiddleware, isAdmin, createCategory);
+router.put('/:id', authMiddleware, isAdmin, updateCategory);
+router.delete('/:id', authMiddleware, isAdmin, deleteCategory);
 
 export default router;

@@ -1,0 +1,45 @@
+/* Cart Component Styles */
+.cart-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--accent-contrast);
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--r2);
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.cart-button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cart-text {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.cart-count {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background-color: var(--danger);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Mobile Cart Adjustments */
+@media (max-width: 768px) {
+  ui-cart-button .cart-text {
+    display: none;
+  }
+}

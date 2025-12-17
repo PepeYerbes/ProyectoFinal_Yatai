@@ -1,0 +1,90 @@
+/* Card Component Styles */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+  box-shadow: var(--elev-1);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--elev-2);
+}
+
+.card-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+/* Card variants */
+.card-elevated {
+  box-shadow: var(--elev-2);
+}
+
+.card-elevated:hover {
+  box-shadow: var(--elev-3);
+}
+
+.card-flat {
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+.card-outline {
+  background: transparent;
+  border: 2px solid var(--border);
+  box-shadow: none;
+}
+
+/* Card sizes */
+.card-sm .card-content {
+  padding: 12px;
+}
+
+.card-sm .card-header,
+.card-sm .card-footer {
+  padding: 12px;
+}
+
+.card-lg .card-content {
+  padding: 24px;
+}
+
+.card-lg .card-header,
+.card-lg .card-footer {
+  padding: 24px;
+}
+
+/* Interactive card */
+.card-interactive {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--elev-3);
+}

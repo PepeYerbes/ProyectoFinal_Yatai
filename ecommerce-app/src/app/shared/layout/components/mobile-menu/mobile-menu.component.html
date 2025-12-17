@@ -1,0 +1,63 @@
+<!-- Mobile Menu Toggle Button -->
+<div class="mobile-top-bar">
+  <button class="mobile-menu-button" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="logo-section-mobile">
+    <a href="/" class="logo-mobile">TuTienda</a>
+  </div>
+</div>
+
+<!-- Mobile Slide Menu -->
+<div class="mobile-slide-menu" [class.open]="isMobileMenuOpen">
+  <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+
+  <div class="mobile-menu-content">
+    <!-- Menu Header -->
+    <div class="mobile-menu-header">
+      <h3 class="menu-title">Menú</h3>
+      <button class="close-button" (click)="closeMobileMenu()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="mobile-menu-section">
+      <h4 class="section-title">Categorías</h4>
+      <div class="mobile-categories">
+        <button class="mobile-category-item" *ngFor="let category of categories" (click)="onCategoryClick(category)">
+          <span>{{ category }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Links Section -->
+    <div class="mobile-menu-section">
+      <h4 class="section-title">Navegación</h4>
+      <div class="mobile-nav-links">
+        <a *ngFor="let link of navLinks" [href]="link.href" class="mobile-nav-link" (click)="onNavLinkClick(link)">
+          {{ link.label }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Additional Options -->
+    <div class="mobile-menu-section">
+      <div class="mobile-auth-links">
+        <a href="/auth/login" class="mobile-auth-link" (click)="closeMobileMenu()">Iniciar Sesión</a>
+        <a href="/auth/register" class="mobile-auth-link" (click)="closeMobileMenu()">Registrarse</a>
+      </div>
+    </div>
+  </div>
+</div>

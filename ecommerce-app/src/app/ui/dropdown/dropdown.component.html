@@ -1,0 +1,18 @@
+<!-- Dropdown Component Template -->
+<div class="dropdown-container">
+  <div (click)="toggle()" (keydown.enter)="toggle()" (keydown.space)="toggle(); $event.preventDefault()"
+    class="dropdown-trigger" [class.active]="isOpen" tabindex="0" role="button" [attr.aria-expanded]="isOpen"
+    aria-haspopup="true">
+    <ng-content select="[slot=trigger]"></ng-content>
+    <ui-icon name="chevron-down" [size]="12" class="dropdown-arrow" [class.rotated]="isOpen">
+    </ui-icon>
+  </div>
+
+  @if (isOpen) {
+  <div class="dropdown-menu" [class]="menuClass">
+    <div class="dropdown-content">
+      <ng-content select="[slot=content]"></ng-content>
+    </div>
+  </div>
+  }
+</div>

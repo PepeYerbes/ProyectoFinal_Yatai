@@ -5,14 +5,15 @@ dotenv.config();
 
 const dbConnection = async () => {
     try {
-        const dbURI = process.env.MONGODB_URI;
+        const mongoUri = process.env.MONGO_URI;
         const dbName = process.env.MONGODB_DB;
         
-        await mongose.connect(`${dbURI}/${dbName}`, {
+        await mongose.connect(mongoUri, {
+            dbName: dbName || 'ecommerce-db',
         });
-        console.log(`MongoDB is connected`);
+        console.log(`MongoDB is connected to database: ${dbName || 'ecommerce-db'}`);
     } catch (error) {
-        console.log(error);
+        console.error('MongoDB connection error:', error);
         process.exit(1);
     }
 };

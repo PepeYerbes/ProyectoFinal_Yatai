@@ -2,6 +2,7 @@ import express from 'express';
 import {
   getProducts,
   getProductById,
+  getCategories,
   getProductByCategory,
   createProduct,
   updateProduct,
@@ -15,7 +16,7 @@ import { query } from 'express-validator';
 
 const router = express.Router();
 
-router.get('/products', [
+router.get('', [
   query('page')
     .optional()
     .isNumeric().withMessage('Page parameter must be a number'),
@@ -23,11 +24,13 @@ router.get('/products', [
     .optional()
     .isNumeric().withMessage('Limit parameter must be a number'),
 ], validate, getProducts);
-router.get('/products/search', searchProducts);
-router.get('/products/category/:idCategory', getProductByCategory);
-router.get('/products/:id', getProductById);
-router.post('/products', authMiddleware, isAdmin, createProduct);
-router.put('/products/:id', authMiddleware, isAdmin, updateProduct);
-router.delete('/products/:id', authMiddleware, isAdmin, deleteProduct);
+router.get('/search', searchProducts);
+router.get('/categories', getCategories);
+router.get('/category/:idCategory', getProductByCategory);
+router.get('/categories/:idCategory/products', getProductByCategory);
+router.get('/:id', getProductById);
+router.post('', authMiddleware, isAdmin, createProduct);
+router.put('/:id', authMiddleware, isAdmin, updateProduct);
+router.delete('/:id', authMiddleware, isAdmin, deleteProduct);
 
 export default router;

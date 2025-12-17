@@ -1,0 +1,64 @@
+<!-- Icon Component Template -->
+<svg [attr.width]="size" [attr.height]="size" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  [attr.stroke-width]="strokeWidth" class="ui-icon">
+  <!-- Search Icon -->
+  @if (name === 'search') {
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.35-4.35"></path>
+  }
+
+  <!-- Cart Icon -->
+  @if (name === 'cart') {
+  <circle cx="9" cy="21" r="1"></circle>
+  <circle cx="20" cy="21" r="1"></circle>
+  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+  }
+
+  <!-- User Icon -->
+  @if (name === 'user') {
+  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+  <circle cx="12" cy="7" r="4"></circle>
+  }
+
+  <!-- Menu Icon -->
+  @if (name === 'menu') {
+  <line x1="3" y1="6" x2="21" y2="6"></line>
+  <line x1="3" y1="12" x2="21" y2="12"></line>
+  <line x1="3" y1="18" x2="21" y2="18"></line>
+  }
+
+  <!-- Chevron Down -->
+  @if (name === 'chevron-down') {
+  <polyline points="6,9 12,15 18,9"></polyline>
+  }
+
+  <!-- Star Icon -->
+  @if (name === 'star') {
+  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+  }
+
+  <!-- Heart Icon -->
+  @if (name === 'heart') {
+  <path
+    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+  </path>
+  }
+
+  <!-- Sun Icon -->
+  @if (name === 'sun') {
+  <circle cx="12" cy="12" r="5"></circle>
+  <line x1="12" y1="1" x2="12" y2="3"></line>
+  <line x1="12" y1="21" x2="12" y2="23"></line>
+  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+  <line x1="1" y1="12" x2="3" y2="12"></line>
+  <line x1="21" y1="12" x2="23" y2="12"></line>
+  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  }
+
+  <!-- Moon Icon -->
+  @if (name === 'moon') {
+  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  }
+</svg>

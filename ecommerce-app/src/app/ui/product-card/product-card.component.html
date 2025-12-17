@@ -1,0 +1,79 @@
+<!-- Product Card Component Template -->
+<div class="product-card" [class.compact]="compact" [class.loading]="isLoading" (click)="onCardClick()">
+  <!-- Product Image -->
+  <div class="product-image">
+    <img [src]="product.imagesUrl[0] || placeholderImage" [alt]="product.name" (load)="onImageLoad($event)"
+      (error)="onImageError($event)" />
+
+    <!-- Discount Badge (if applicable) -->
+    @if (hasDiscount) {
+    <div class="discount-badge">
+      <ui-badge type="danger">-{{ discountPercentage }}%</ui-badge>
+    </div>
+    }
+
+    <!-- Favorite Button -->
+    <button class="favorite-button" (click)="onFavoriteClick($event)" [class.active]="isFavorite"
+      [attr.aria-label]="isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'">
+      <ui-icon name="heart" [size]="16"></ui-icon>
+    </button>
+  </div>
+
+  <!-- Product Info -->
+  <div class="product-info">
+    <div class="product-header">
+      <h3 class="product-name">{{ product.name }}</h3>
+      @if (showRating && ratingStars.length > 0) {
+      <div class="product-rating">
+        <div class="stars">
+          @for (star of ratingStars; track $index) {
+          <ui-icon name="star" [size]="12" [class]="star ? 'star-filled' : 'star-empty'"></ui-icon>
+          }
+        </div>
+      </div>
+      }
+    </div>
+
+    @if (showDescription) {
+    <p class="product-description">{{ product.description }}</p>
+    }
+
+    <!-- Price Section -->
+    <div class="product-price">
+      <div class="current-price">
+        <span class="currency">$</span>
+        <span class="amount">{{ formatPrice(product.price) }}</span>
+      </div>
+    </div>
+
+    <div class="product-meta">
+      @if (showCategory) {
+      <div class="product-category">
+        <ui-badge type="default">{{ product.category.name }}</ui-badge>
+      </div>
+      }
+
+      @if (showStock) {
+      <div class="product-stock">
+        @if (product.stock > 0) {
+        <ui-badge [type]="stockStatus === 'low-stock' ? 'warning' : 'success'">
+          {{ stockMessage }}
+        </ui-badge>
+        } @else {
+        <ui-badge type="danger">Sin stock</ui-badge>
+        }
+      </div>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="product-actions">
+      @if (showAddToCart) {
+      <ui-button variant="primary" [disabled]="isOutOfStock || isLoading" (click)="onAddToCart($event)"
+        class="add-to-cart-btn">
+        {{ addToCartText }}
+      </ui-button>
+      }
+    </div>
+  </div>
+</div>

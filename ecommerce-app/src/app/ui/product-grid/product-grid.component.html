@@ -1,0 +1,100 @@
+<!-- Loading State -->
+@if (isLoading) {
+<div class="loading-grid" [class]="'loading-' + gridVariant">
+  @for (item of loadingArray; track $index) {
+  <div class="loading-card">
+    <div class="loading-image"></div>
+    <div class="loading-content">
+      <div class="loading-title"></div>
+      <div class="loading-description"></div>
+      <div class="loading-price"></div>
+      <div class="loading-button"></div>
+    </div>
+  </div>
+  }
+</div>
+}
+
+<!-- Products Grid -->
+@if (!isLoading && products.length > 0) {
+<div class="products-grid" [class]="gridClass" [class.has-filters]="hasFilters"
+  [attr.aria-label]="'Grilla de ' + products.length + ' productos'" role="grid">
+  @for (product of products; track product._id; let index = $index) {
+    <div class="grid-item" [attr.aria-label]="'Producto ' + (index + 1) + ' de ' + products.length" role="gridcell">
+    <ui-product-card-simple [product]="product" [showStock]="showStock" [showAddToCart]="showAddToCart"
+      [showDescription]="showDescription" [showRating]="showRating" [placeholderImage]="placeholderImage"
+      [isLoading]="loadingProductIds.includes(product._id)" [isFavorite]="isFavoriteFor(product)"
+      (cardClick)="onProductClick($event)" (addToCart)="onAddToCart($event)" (imageClick)="onImageClick($event)"
+      (favoriteToggle)="onFavoriteToggle($event)"></ui-product-card-simple>
+  </div>
+  }
+</div>
+}
+
+<!-- Estado vacío personalizado para categorías sin productos -->
+@if (!isLoading && products.length === 0 && showEmptyState) {
+<div class="empty-state" [class.has-search]="hasSearchQuery">
+  <div class="empty-state-icon">
+    @if (hasSearchQuery) {
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+        <path d="M16 8a8 8 0 0 0-8 8" />
+      </svg>
+    } @else {
+      <img src="img/products/proximamente.png" alt="Próximamente" style="width:400px;max-width:100vw;border-radius:12px;box-shadow:0 4px 10px 0 rgba(0,0,0,0.08);margin-bottom:6px;" />
+    }
+  </div>
+
+  <h3>{{ emptyStateTitle || defaultEmptyTitle }}</h3>
+  <p>{{ emptyStateMessage || defaultEmptyMessage }}</p>
+
+  @if (showEmptyStateAction && emptyActionText) {
+    <button class="empty-state-action" (click)="onEmptyStateAction()" [attr.aria-label]="emptyActionText">
+      {{ emptyActionText }}
+    </button>
+  }
+</div>
+}
+
+<!-- Error State -->
+@if (hasError && showErrorState) {
+<div class="error-state">
+  <div class="error-state-icon">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </svg>
+  </div>
+
+  <h3>{{ errorTitle || 'Error al cargar productos' }}</h3>
+  <p>{{ errorMessage || 'Hubo un problema al cargar los productos. Por favor, inténtalo de nuevo.' }}</p>
+
+  @if (showRetryButton) {
+  <button class="retry-button" (click)="onRetry()" [disabled]="isRetrying"
+    [attr.aria-label]="'Reintentar cargar productos'">
+    @if (!isRetrying) {
+    Reintentar
+    }
+    @if (isRetrying) {
+    <span class="retry-loading">
+      <span class="loading-spinner"></span>
+      Reintentando...
+    </span>
+    }
+  </button>
+  }
+</div>
+}
+
+<!-- Grid Analytics Info (Development only) -->
+@if (showGridInfo && isDevelopment) {
+<div class="grid-info">
+  <small>
+    Grid: {{ gridVariant }} |
+    Productos: {{ products.length }} |
+    Columnas: {{ currentColumns }}
+  </small>
+</div>
+}

@@ -1,0 +1,59 @@
+<div class="search-results">
+  <div class="search-header">
+    <h2>Resultados de búsqueda para: "{{ searchQuery }}"</h2>
+    @if (!loading) {
+    <span class="results-count">{{ products.length }} resultados</span>
+    }
+  </div>
+
+  @if (loading) {
+  <div class="loading">
+    <p>Buscando productos...</p>
+  </div>
+  }
+
+  @if (error) {
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  }
+
+  @if (!loading && !error) {
+  <div class="products-grid">
+    @for (product of products; track product._id) {
+    <div class="product-card">
+      <div class="product-image">
+        <img [src]="product.imagesUrl[0] || '/placeholder-product.jpg'" [alt]="product.name">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-price">
+          <span class="currency">$</span>
+          <span class="amount">{{ product.price | number:'1.2-2' }}</span>
+        </div>
+        <div class="product-category">
+          <span class="category-tag">{{ product.category.name }}</span>
+        </div>
+        <button class="add-to-cart-btn" (click)="onAddToCart(product)" 
+          [disabled]="product.stock === 0 || isAddingToCart(product._id)"
+          [class.loading]="isAddingToCart(product._id)">
+          @if (!isAddingToCart(product._id)) {
+            {{ product.stock === 0 ? 'No disponible' : 'Agregar al carrito' }}
+          } @else {
+            Agregando...
+          }
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  }
+
+  @if (!loading && !error && products.length === 0) {
+  <div class="no-results">
+    <h3>No se encontraron productos</h3>
+    <p>Intenta con otros términos de búsqueda.</p>
+  </div>
+  }
+</div>

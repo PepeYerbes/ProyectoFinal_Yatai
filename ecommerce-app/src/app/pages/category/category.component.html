@@ -1,0 +1,33 @@
+<div class="category-page">
+  <div class="category-header">
+    @if (categoryName) {
+    <h2>Productos en {{ categoryName }}</h2>
+    } @else if (!loading) {
+    <h2>Productos por categoría</h2>
+    }
+    @if (!loading) {
+    <span class="results-count">{{ products.length }} productos</span>
+    }
+  </div>
+
+  @if (loading) {
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Cargando productos...</p>
+  </div>
+  }
+
+  @if (error) {
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  }
+
+  @if (!loading && !error) {
+  <ui-product-grid [products]="products" [showStock]="true" [showAddToCart]="true"
+    [favoriteIds]="favorites" (favoriteToggle)="onFavoriteToggle($event)"
+    [emptyStateTitle]="'No hay productos en esta categoría'"
+    [emptyStateMessage]="'Explora otras categorías para encontrar lo que buscas.'"
+    (productClick)="onProductClick($event)" (addToCart)="onAddToCart($event)"></ui-product-grid>
+  }
+</div>

@@ -1,0 +1,78 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">Yatai</span>
+      </div>
+      <h1 class="auth-title">Crear cuenta</h1>
+      <p class="auth-subtitle">Únete a nosotros y disfruta de una experiencia de compra excepcional</p>
+    </div>
+
+    <!-- Banner de mensajes -->
+    @if (bannerText) {
+    <div class="auth-banner" [class]="bannerKind === 'error' ? 'error' : 'success'">
+      <div class="banner-icon">{{ bannerKind === 'error' ? '⚠️' : '✅' }}</div>
+      <div class="banner-content">
+        <strong>{{ bannerKind === 'error' ? 'Error:' : 'Éxito:' }}</strong>
+        <span>{{ bannerText }}</span>
+      </div>
+    </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+      <ui-form-field label="Nombre completo" [error]="err('displayName')" [hint]="'Como aparecerá en tu perfil'">
+        <ui-input formControlName="displayName" placeholder="Ingresa tu nombre completo"
+          [attr.aria-describedby]="err('displayName') ? 'displayName-error' : null">
+        </ui-input>
+      </ui-form-field>
+
+      <ui-form-field label="Correo electrónico" [error]="err('email')"
+        [hint]="'No compartimos tu información personal'">
+        <ui-input type="email" formControlName="email" placeholder="tucorreo@ejemplo.com"
+          [attr.aria-describedby]="err('email') ? 'email-error' : null">
+        </ui-input>
+      </ui-form-field>
+
+      <div class="form-row">
+        <ui-form-field label="Contraseña" [error]="err('password')" [hint]="'Mínimo 6 caracteres y al menos 1 número'">
+          <ui-input type="password" formControlName="password" placeholder="Crea una contraseña segura"
+            [attr.aria-describedby]="err('password') ? 'password-error' : null">
+          </ui-input>
+        </ui-form-field>
+
+        <ui-form-field label="Confirmar contraseña" [error]="groupErr('passwordsMismatch')">
+          <ui-input type="password" formControlName="confirmar" placeholder="Repite tu contraseña"
+            [attr.aria-describedby]="groupErr('passwordsMismatch') ? 'confirmar-error' : null">
+          </ui-input>
+        </ui-form-field>
+      </div>
+
+      <div class="checkbox-field">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="terminos" class="checkbox-input">
+          <span class="checkbox-text">
+            Acepto los
+            <a href="#" class="terms-link">términos y condiciones</a>
+            y la
+            <a href="#" class="terms-link">política de privacidad</a>
+          </span>
+        </label>
+        @if (err('terminos')) {
+        <div class="field-error">{{ err('terminos') }}</div>
+        }
+      </div>
+
+      <ui-button [disabled]="!form.valid || form.pending || loading" [loading]="loading" class="auth-submit-button">
+        Crear mi cuenta
+      </ui-button>
+    </form>
+
+    <div class="auth-footer">
+      <p class="auth-footer-text">
+        ¿Ya tienes una cuenta?
+        <a routerLink="/auth/login" class="auth-link">Inicia sesión aquí</a>
+      </p>
+    </div>
+  </div>
+</div>

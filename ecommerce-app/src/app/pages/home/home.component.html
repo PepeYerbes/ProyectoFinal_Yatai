@@ -1,0 +1,77 @@
+<div class="home-page">
+  <!-- Hero Section with Video Carousel
+        <!-- Right: Video Carousel -->
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="video-frame">
+            <iframe
+              [src]="getSafeUrl(currentVideoIndex)"
+              width="100%"
+              height="90%"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <button class="carousel-btn prev-btn" (click)="prevVideo()" aria-label="Video anterior">❮</button>
+          <button class="carousel-btn next-btn" (click)="nextVideo()" aria-label="Siguiente video">❯</button>
+
+          <div class="carousel-indicators">
+            <button *ngFor="let v of videos; let i = index" class="indicator" [class.active]="i === currentVideoIndex" (click)="goToVideo(i)" [attr.aria-label]="'Video ' + (i + 1)"></button>
+          </div>
+        </div>
+
+        <p class="video-title">{{ videos[currentVideoIndex].title }}</p>
+      </div>
+    </div>
+ 
+
+  <!-- Featured Products Section -->
+  <section class="featured-products">
+    <div class="section-header">
+      <h2 class="section-title">Productos Destacados</h2>
+      <ui-button variant="secondary" (click)="navigateToProducts()" class="view-all-btn">
+        Ver Todos
+      </ui-button>
+    </div>
+
+    @if (isLoading) {
+    <div class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Cargando productos...</p>
+    </div>
+    } @else if (error) {
+    <ui-card variant="outline" class="error-card">
+      <div class="error-content">
+        <h3>Error al cargar productos</h3>
+        <p>{{ error }}</p>
+        <ui-button variant="primary" (click)="loadProducts()">
+          Reintentar
+        </ui-button>
+      </div>
+    </ui-card>
+    } @else {
+    <ui-product-grid [products]="featuredProducts" [gridVariant]="'default'" [showAddToCart]="true" [showStock]="false"
+      [favoriteIds]="favorites" (favoriteToggle)="onFavoriteToggle($event)" (productClick)="onProductClick($event)" (addToCart)="onAddToCart($event)" />
+    }
+  </section>
+
+  <!-- Categories Preview Section -->
+  <section class="categories-preview">
+    <div class="section-header">
+      <h2 class="section-title">Explora por Categorías</h2>
+    </div>
+
+    <div class="categories-grid">
+      @for (category of uniqueCategories; track category._id) {
+      <ui-card variant="outline" class="category-card" (click)="navigateToCategory(category._id)">
+        <div class="category-content">
+          <img [src]="category.imagesUrl[0]" [alt]="category.name" class="category-image" (error)="onImageError($event)">
+          <h3 class="category-name">{{ category.name }}</h3>
+          <p class="category-description">{{ category.description }}</p>
+        </div>
+      </ui-card>
+      }
+    </div>
+  </section>

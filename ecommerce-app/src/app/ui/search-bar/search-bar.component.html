@@ -1,0 +1,21 @@
+<!-- Search Bar Component Template -->
+<div class="search-container" [class]="containerClasses">
+  <div class="search-input-wrapper">
+    <input type="text" [(ngModel)]="query" (keyup.enter)="onSearch()" (input)="onInput($event)" (focus)="onFocus()"
+      (blur)="onBlur()" [placeholder]="placeholder" [disabled]="disabled" class="search-input">
+
+    @if (showClearButton && query) {
+    <button class="clear-button" (click)="onClear()" type="button" aria-label="Limpiar búsqueda">
+      ×
+    </button>
+    }
+  </div>
+
+  <button (click)="onSearch()" class="search-button" [disabled]="!query.trim() || disabled" type="button"
+    [attr.aria-label]="searchButtonLabel">
+    <ui-icon name="search" [size]="iconSize"></ui-icon>
+    @if (showSearchText) {
+    <span class="search-text">Buscar</span>
+    }
+  </button>
+</div>

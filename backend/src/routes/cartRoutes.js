@@ -14,24 +14,24 @@ import isAdmin from '../middlewares/isAdminMiddleware.js';
 const router = express.Router();
 
 // Obtener todos los carritos (admin)
-router.get('/cart', authMiddleware, isAdmin, getCarts);
+router.get('', authMiddleware, isAdmin, getCarts);
 
 // Obtener carrito por ID
-router.get('/cart/:id', authMiddleware, isAdmin, getCartById);
+router.get('/:id', authMiddleware, isAdmin, getCartById);
 
 // Obtener carrito por usuario
-router.get('/cart/user/:id', authMiddleware, getCartByUser);
+router.get('/user/:id', authMiddleware, getCartByUser);
 
 // Crear nuevo carrito
-router.post('/cart', authMiddleware, createCart);
+router.post('', authMiddleware, createCart);
 
 // Agregar producto al carrito (función especial)
-router.post('/cart/add-product', authMiddleware, addProductToCart);
+router.post('/add-product', authMiddleware, addProductToCart);
 
 // Actualizar carrito completo
-router.put('/cart/:id', authMiddleware, updateCart);
+router.put('/:id', authMiddleware, updateCart);
 
 // Eliminar carrito
-router.delete('/cart/:id', authMiddleware, deleteCart);
+router.delete('/:id', authMiddleware, deleteCart);
 
 export default router;
